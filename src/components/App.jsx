@@ -10,10 +10,14 @@ import {
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
+import { Routes, Route } from 'react-router-dom';
 
 export const App = () => {
   return (
     <MainContainer>
+      <Routes>
+        <Route path="/" element={<div>Layout</div>}></Route>
+      </Routes>
       <Title>PhoneBook</Title>
 
       <PhonebookContainer>
