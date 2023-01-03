@@ -11,12 +11,13 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
 
 export const App = () => {
   return (
     <MainContainer>
       <Routes>
-        <Route path="/" element={<div>Layout</div>}></Route>
+        <Route path="/" element={<Layout />}></Route>
       </Routes>
       <Title>PhoneBook</Title>
 
