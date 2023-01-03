@@ -1,23 +1,35 @@
-import { RiHomeHeartFill, RiMovieLine } from 'react-icons/ri';
+// import { MdAppRegistration, MdLogin } from 'react-icons/md';
 
-import { Header, Nav, NavLinks } from './AppBar.styled';
-
-const navItems = [
-  { href: '/', text: 'Home', icon: RiHomeHeartFill },
-  { href: 'movies', text: 'Movies', icon: RiMovieLine },
-];
+import { Header } from './AppBar.styled';
+import { Navigation } from 'components/Navigation/Navigation';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { AuthNav } from 'components/AuthNav/AuthNav';
 
 export const AppBar = () => {
+  // const { isLoggedIn } = useAuth();
+  const isLoggedIn = false;
+
   return (
     <Header>
-      <Nav>
-        {navItems.map(({ href, text, icon: Icon }) => (
-          <NavLinks to={href} key={href}>
-            <Icon size={22} />
-            {text}
-          </NavLinks>
-        ))}
-      </Nav>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </Header>
   );
 };
+
+// return (
+//   <Header>
+//     <Nav>
+//       <NavLink to="/">
+//         <RiHomeHeartFill size={22} />
+//         Home
+//       </NavLink>
+//       {navItems.map(({ href, text, icon: Icon }) => (
+//         <NavLinks to={href} key={href}>
+//           <Icon size={22} />
+//           {text}
+//         </NavLinks>
+//       ))}
+//     </Nav>
+//   </Header>
+// );

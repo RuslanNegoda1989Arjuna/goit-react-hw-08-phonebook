@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 export const LayoutBox = styled.div`
-  display: flex;
+  margin: '0 auto';
+  padding: '0 16px';
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 `;
