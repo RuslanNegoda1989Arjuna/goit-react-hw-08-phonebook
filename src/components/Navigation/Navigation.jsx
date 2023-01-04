@@ -3,12 +3,12 @@ import { HomeNavLink } from './Navigation.styled';
 
 export const Navigation = () => {
   // const { isLoggedIn } = useAuth();
-  const isLoggedInT = false;
+  const isLoggedInT = true;
 
   return (
     <nav>
       <HomeNavLink to="/">Home</HomeNavLink>
-      {isLoggedInT && <HomeNavLink to="/tasks">Tasks</HomeNavLink>}
+      {isLoggedInT && <HomeNavLink to="/phonebook">Phone Book</HomeNavLink>}
     </nav>
   );
 };

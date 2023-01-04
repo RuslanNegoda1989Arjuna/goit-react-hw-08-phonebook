@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Button, FormUs, Input, LabelIn } from './PhonebookForm.styled';
 import {
@@ -60,8 +59,4 @@ export const PhonebookForm = () => {
       </Formik>
     </>
   );
-};
-
-Event.propTypes = {
-  onSubmit: PropTypes.func,
 };
