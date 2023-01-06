@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const authApi = createApi({
-  reducerPath: 'contactsApi',
+  reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://639d73671ec9c6657baa7b37.mockapi.io/api/v1/',
+    baseUrl: 'https://connections-api.herokuapp.com/',
   }),
-  tagTypes: ['Contacts'],
+  tagTypes: ['Users'],
   endpoints: builder => ({
     getContacts: builder.query({
       query: () => `contacts`,
-      providesTags: ['Contacts'],
+      providesTags: ['Users'],
     }),
     createContact: builder.mutation({
       query: newContact => ({
@@ -17,20 +17,20 @@ export const authApi = createApi({
         method: 'POST',
         body: newContact,
       }),
-      // Для підтягування змін без перезавантаження
-      invalidatesTags: ['Contacts'],
+
+      invalidatesTags: ['Users'],
     }),
     deleteContact: builder.mutation({
       query: contactId => ({
         url: `contacts/${contactId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Contacts'],
+      invalidatesTags: ['Users'],
     }),
   }),
 });
-export const {
-  useGetContactsQuery,
-  useDeleteContactMutation,
-  useCreateContactMutation,
-} = contactsApi;
+// export const {
+//   useGetContactsQuery,
+//   useDeleteContactMutation,
+//   useCreateContactMutation,
+// } = contactsApi;
