@@ -4,18 +4,25 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ['Users'],
   endpoints: builder => ({
-    getContacts: builder.query({
-      query: () => `contacts`,
+    fetchCurrentUser: builder.query({
+      query: () => `users/current`,
       providesTags: ['Users'],
     }),
-    createContact: builder.mutation({
-      query: newContact => ({
-        url: 'contacts',
+    register: builder.mutation({
+      query: credentials => ({
+        url: 'users/signup',
         method: 'POST',
-        body: newContact,
+        body: credentials,
       }),
 
       invalidatesTags: ['Users'],
@@ -29,8 +36,8 @@ export const authApi = createApi({
     }),
   }),
 });
-// export const {
-//   useGetContactsQuery,
-//   useDeleteContactMutation,
-//   useCreateContactMutation,
-// } = contactsApi;
+export const {
+  useFetchCurrentUserQuery,
+  useDeleteContactMutation,
+  useRegisterMutation,
+} = authApi;
