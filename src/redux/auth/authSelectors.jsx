@@ -7,7 +7,7 @@ export const getIsRefreshing = state => state.auth.isRefreshing;
 const authSelectors = {
   getIsLoggedIn,
   getUsername,
-  selectIsRefreshing,
+  getIsRefreshing,
 };
 
 export default authSelectors;

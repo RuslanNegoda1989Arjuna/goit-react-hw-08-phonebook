@@ -5,16 +5,20 @@ import {
   InputReg,
   LabelReg,
 } from './RegisterForm.styled';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/authOperations';
 
 const registerValues = {
-  user_name: '',
+  name: '',
   email: '',
   password: '',
 };
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
   const registerSubmit = (values, { resetForm }) => {
     console.log(values);
+    dispatch(register(values));
 
     // скидаємо форму
     resetForm();
@@ -28,7 +32,7 @@ export const RegisterForm = () => {
             UserName
             <InputReg
               type="text"
-              name="user_name"
+              name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required

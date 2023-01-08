@@ -1,14 +1,15 @@
 // import { useDispatch } from 'react-redux';
 // import { logOut } from 'redux/auth/operations';
-// import { useAuth } from 'hooks';
+
+import { useAuth } from 'hook';
 import { UserBox, UserName } from './UserMenu.styled';
 
 export const UserMenu = () => {
   // const dispatch = useDispatch();
-  // const { user } = useAuth();
-  const user = {
-    name: 'Ruslan',
-  };
+  const { user } = useAuth();
+  // const user = {
+  //   name: 'Ruslan',
+  // };
   function logOut() {
     console.log('Im Dispatch');
   }
