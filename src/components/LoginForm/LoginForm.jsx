@@ -6,6 +6,8 @@ import {
   InputLogin,
   LabelLogin,
 } from './LoginForm.styled';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/authOperations';
 
 const loginValues = {
   email: '',
@@ -13,8 +15,9 @@ const loginValues = {
 };
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const loginSubmit = (values, { resetForm }) => {
-    console.log(values);
+    dispatch(logIn(values));
 
     // скидаємо форму
     resetForm();
