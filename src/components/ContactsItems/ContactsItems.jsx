@@ -4,13 +4,13 @@ import { IconButton } from 'components/IconButton/IconButton';
 import { SpinerDelete } from 'components/Spiner/Spiner';
 import { MdDeleteOutline } from 'react-icons/md';
 
-export const ContactsItems = ({ id, name, phone }) => {
+export const ContactsItems = ({ id, name, number }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   return (
     <Item>
       <ContactIt>
-        {name}: {phone}
+        {name}: {number}
       </ContactIt>
       <IconButton
         type="button"

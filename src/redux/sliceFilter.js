@@ -8,7 +8,7 @@ export const filterSlice = createSlice({
   // Об'єкт редюсерів
   reducers: {
     filterContacts(state, action) {
-      return action.payload;
+      return (state = action.payload);
     },
   },
 });
