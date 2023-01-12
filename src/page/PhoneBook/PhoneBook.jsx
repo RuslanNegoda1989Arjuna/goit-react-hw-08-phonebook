@@ -7,10 +7,12 @@ import { PhonebookForm } from 'components/PhonebookForm/PhonebookForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Toaster } from 'react-hot-toast';
+import { useGetContactsQuery } from 'redux/sliceContacts';
 // import { fetchTasks } from 'redux/tasks/operations';
 // import { selectLoading } from 'redux/tasks/selectors';
 
 export default function PhoneBook() {
+  const { data: contacts, isFetching } = useGetContactsQuery();
   // const dispatch = useDispatch();
   // const isLoading = useSelector(selectLoading);
 
@@ -21,7 +23,7 @@ export default function PhoneBook() {
   return (
     <>
       <Helmet>
-        <title>Your tasks</title>
+        <title>PhoneBook</title>
       </Helmet>
       <Title>PhoneBook</Title>
 
