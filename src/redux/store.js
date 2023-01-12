@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import { contactsApi } from './sliceContacts';
 import { filterReducer } from './sliceFilter';
-import { setupListeners } from '@reduxjs/toolkit/dist/query';
+// import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
