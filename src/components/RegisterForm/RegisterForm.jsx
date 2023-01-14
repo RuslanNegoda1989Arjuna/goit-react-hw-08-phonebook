@@ -42,7 +42,7 @@ export const RegisterForm = () => {
               type="password"
               name="password"
               pattern=".{8,}"
-              title="Eight or more characters"
+              title="8 or more characters"
               required
             />
           </LabelReg>
