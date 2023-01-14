@@ -38,7 +38,13 @@ export const RegisterForm = () => {
           </LabelReg>
           <LabelReg htmlFor="">
             Password
-            <InputReg type="password" name="password" required />
+            <InputReg
+              type="password"
+              name="password"
+              pattern=".{8,}"
+              title="Eight or more characters"
+              required
+            />
           </LabelReg>
           <BtnRegister type="submit">Register</BtnRegister>
         </FormRegistrate>

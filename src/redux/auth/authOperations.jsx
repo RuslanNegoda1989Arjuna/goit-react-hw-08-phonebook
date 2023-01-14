@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import toast from 'react-hot-toast';
+
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 const setAuthHeader = token => {
@@ -17,8 +19,12 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
+      toast.success(`${res.data.user.name}, welcome to your phonebook`);
       return res.data;
     } catch (error) {
+      toast.error(
+        `User with this email ${credentials.email} is already registered!`
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,8 +36,10 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       setAuthHeader(res.data.token);
+      toast.success(`${res.data.user.name}, welcome to your phonebook`);
       return res.data;
     } catch (error) {
+      toast.error(`Wrong login or password, please check your input.`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,6 +49,9 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     clearAuthHeader();
+    toast('Good Job!', {
+      icon: '👏',
+    });
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -49,12 +60,6 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    // const { token } = thunkAPI.getState().auth;
-
-    // if (!token) {
-    //   return;
-    // }
-
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -73,30 +78,6 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-// export const refreshUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
-
-//     if (persistedToken === null) {
-
-//       return thunkAPI.rejectWithValue('Unable to fetch user');
-//     }
-
-//     try {
-//       setAuthHeader(persistedToken);
-//       const res = await axios.get('/users/me');
-//       return res.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // export const authApi = createApi({
 //   reducerPath: 'authApi',
